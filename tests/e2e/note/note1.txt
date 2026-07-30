@@ -1,0 +1,98 @@
+test.describe.configure({ mode: 'parallel' }) --
+is a Playwright configuration method that tells Playwright to execute the tests within 
+the current describe block in parallel, instead of running them one after another.
+
+example
+test.describe.configure({ mode: 'parallel' });
+
+test('Test 1', async ({ page }) => {
+  await page.goto('https://example.com');
+});
+
+test('Test 2', async ({ page }) => {
+  await page.goto('https://example.com');
+});
+
+workers means browser
+
+// Run tests in parallel
+test.describe.configure({ mode: 'parallel' });
+
+// Run tests serially (stop remaining tests if one fails)
+test.describe.configure({ mode: 'serial' });
+
+// Default behavior (controlled by Playwright configuration)
+test.describe.configure({ mode: 'default' });
+
+With workers: 4, up to 4 tests can execute at the same time 
+(subject to available tests and system resources).
+
+fullyParallel: true 
+               is a global Playwright configuration that tells Playwright 
+               to run all tests in all files in parallel, as long as there are 
+               enough workers available.
+fullyParallel: false  it will run in serial mode
+
+test.describe.configure({ mode: 'serial' }); it will override the configuration of Playwright.cofig.ts or js
+Global expect timeout
+In Playwright, you can configure the default timeout for all 
+expect assertions using the expect option in playwright.config.ts.
+
+import { defineConfig } from '@playwright/test';
+
+export default defineConfig({
+  expect: {
+    timeout: 2000, // 2 seconds
+  },
+});
+Per-assertion timeout
+You can also override the timeout for a specific assertion:
+await expect(page.locator('#login')).toBeVisible({
+  timeout: 2000,
+});
+
+| Configuration               | Purpose                                              |
+| --------------------------- | ---------------------------------------------------- |
+| `expect: { timeout: 2000 }` | Default timeout for all `expect()` assertions        |
+| `timeout: 30000`            | Maximum time allowed for a single test               |
+| `actionTimeout: 5000`       |no Default timeout for actions like `click()`, `fill()` |
+| `navigationTimeout: 10000`  | no Default timeout for page navigations                 |
+
+ To capture screenshots only when a test fails, 
+ configure the use.screenshot option in playwright.config.ts. 
+
+ import { defineConfig } from '@playwright/test';
+
+export default defineConfig({
+  use: {
+    screenshot: 'only-on-failure',
+  },
+});
+
+run in a paticular browser
+
+npx playwright test spec path --headed --project=chrome
+
+
+Git
+
+git config --global --list
+displays all Git configuration settings stored in your global Git configuration file 
+(typically ~/.gitconfig on Linux/macOS or C:\Users\<username>\.gitconfig on Windows).
+example
+user.name=Rajat Kumar Swain
+user.email=rajat@example.com
+core.editor=code --wait
+init.defaultbranch=main
+credential.helper=manager
+| Configuration        | Description                              |
+| -------------------- | ---------------------------------------- |
+| `user.name`          | Your Git username                        |
+| `user.email`         | Your Git email address                   |
+| `core.editor`        | Default editor used by Git               |
+| `init.defaultbranch` | Default branch name for new repositories |
+| `credential.helper`  | Credential manager used by Git           |
+
+download git
+https://git-scm.com/install/windows
+               

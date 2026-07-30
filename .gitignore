@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Playwright reports
+playwright-report/
+test-results/
+results/
+
+# Authentication
+auth.json
+
+# Environment variables
+.env
+
+# Logs
+*.log
+
+# Lock file (optional)
+package-lock.json
