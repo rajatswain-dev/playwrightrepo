@@ -20,3 +20,5 @@ auth.json
 
 # Lock file (optional)
 package-lock.json
+
+.commandcode/
