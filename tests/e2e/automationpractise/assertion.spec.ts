@@ -20,7 +20,7 @@ test.describe('assertion',()=>{
       const actual=await aup.automationTextContent();
       await expect(actual?.trim()).toBe('Automation Testing Practice');
       await expect(actual?.trim()).toContain('Automation Testing Practice');
-      aup.verifyTextContent1()
+      aup.verifyTextContentOnWeb()
     })
     
 
