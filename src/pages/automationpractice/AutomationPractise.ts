@@ -167,7 +167,7 @@ export class AutomationPractise extends BasePage {
     async automationTextContent():Promise<string | null>{
       return   await this.automationText.textContent()
     }
-    async verifyTextContent(){
+    async verifyTextContentOnWeb(){
         await expect(this.automationText).toHaveText('Automation Testing Practice')
     }
 
